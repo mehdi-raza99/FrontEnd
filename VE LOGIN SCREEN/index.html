@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <title>Virtual Escape</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        </style>
+</head>
+<body class="bg-[url(/Login.jpg)] h-[100vh] text-white flex flex-col gap-70 justify-between items-center font-[Montserrat]">
+    <section class="w-[790px] bg-[#113243] flex flex-col gap-6 justify-center items-center rounded-3xl p-10 mt-70">
+        <span class="text-5xl font-semibold tracking-wider">VIRTUAL ESCAPE</span>
+        <span class="text-2xl tracking-widest font-medium">Enter your game code to get started</span>
+        <div class="w-[70%] flex relative">
+            <input type="text" name="Game_code" placeholder="Game Code" class="bg-[#3A4E5A] py-3 px-5 w-full rounded-3xl border border-gray-300 border-b-white pl-6" />
+            <i class="fa-solid fa-question absolute top-3 right-4 bg-red-900 p-1.5 font-extralight rounded-[50%]"></i>
+          </div>
+        <div class="flex gap-8">
+            <button class="bg-[#464E53] p-4 px-12 rounded-3xl font-[600]">TEST CONNECTION</button>
+            <button class="bg-[#2C5167] py-4 px-12 rounded-3xl text-[#788b96]">LOG IN <i class="fa-solid fa-fingerprint"></i></button>
+        </div>
+    </section>
+    <footer class="text-[#dae9f1]">v7.0.1</footer>
+</body>
+</html>
