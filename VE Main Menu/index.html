@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackeye's Treasure - Experios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url(./Assets/BACKGROUND\ IMAGE.png);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff4444;
+        }
+
+        .status-indicators {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #00ff00;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 120px);
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .main-title {
+            font-size: 4rem;
+            font-weight: lighter;
+            margin-bottom: 60px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+            line-height: 1.2;
+            font-family: "Rubik Maps";
+        }
+
+        .navigation-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .nav-card {
+            background: linear-gradient(to right, #3B5667 0%, #2C3D48 100%);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .nav-card.primary {
+            background: linear-gradient(to right, #D81B24 0%, #1A3751 100%);
+            border-color: #dc3545;
+        }
+
+        .nav-icon {
+            width: 90px;
+            height: 90px;
+            border: 3px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            transition: all 0.83s ease;
+        }
+        .nav-icon > img{
+            height: 40px;
+        }
+        .nav-card:hover .nav-icon {
+            transform: rotate(360deg);
+        }
+
+        .nav-title {
+            font-size: 16px;
+            font-family: "Montserrat";
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+            }
+
+            .navigation-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 400px;
+            }
+
+            .nav-card {
+                padding: 30px 15px;
+            }
+
+            .status-indicators {
+                font-size: 12px;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2rem;
+            }
+
+            .navigation-grid {
+                grid-template-columns: 1fr;
+                max-width: 300px;
+            }
+
+            .header {
+                padding: 10px 15px;
+            }
+        }
+
+        /* Animation Effects */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .main-content > * {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .nav-card:nth-child(1) { animation-delay: 0.1s; }
+        .nav-card:nth-child(2) { animation-delay: 0.2s; }
+        .nav-card:nth-child(3) { animation-delay: 0.3s; }
+        .nav-card:nth-child(4) { animation-delay: 0.4s; }
+
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="./Assets/Logo.png" alt="">
+        <div class="status-indicators">
+            <div class="status-item">
+                <img src="./Assets/SWITCH.png" alt="">
+                <span>IS CONNECTED</span>
+            </div>
+            <div class="status-item">
+                <img src="./Assets/Icon metro-exit.png" alt="">
+                <span> LOG OUT</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="subtitle">Experios presents</div>
+        <h1 class="main-title">BLACKEYE'S TREASURE</h1>
+        
+        <div class="navigation-grid">
+            <div class="nav-card">
+                <div class="nav-icon">
+                    <img src="./Assets/inner-logo.png" alt="">
+                </div>
+                <div class="nav-title">OUR GAMES</div>
+            </div>
+            
+            <div class="nav-card">
+                <div class="nav-icon">
+                    <img src="./Assets/graph.png" alt="">
+                </div>
+                <div class="nav-title">LEADERBOARD</div>
+            </div>
+            
+            <div class="nav-card">
+                <div class="nav-icon">
+                    <img src="./Assets/question-mark.png" alt="">
+                </div>
+                <div class="nav-title">HOW TO PLAY</div>
+            </div>
+            
+            <div class="nav-card primary">
+                <div class="nav-icon">
+                    <img src="./Assets/play.png" alt="">
+                </div>
+                <div class="nav-title">GET STARTED</div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add click handlers for navigation cards
+        document.querySelectorAll('.nav-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.nav-title').textContent;
+                console.log(`Navigating to: ${title}`);
+                
+                // Add a visual feedback
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+
+    </script>
+</body>
+</html>
